@@ -20,7 +20,7 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
-                    .requestMatchers("/", "/error", "/webjars/**").permitAll()
+                    .requestMatchers("/", "/index.html", "/static/**", "/error", "/webjars/**", "/login", "/oauth2/**").permitAll() // allow access to these paths without authentication
                     .anyRequest().authenticated()
             )
             .exceptionHandling(exceptionHandling ->
