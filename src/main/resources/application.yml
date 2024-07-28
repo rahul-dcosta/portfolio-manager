@@ -1,4 +1,8 @@
 spring:
+  logging:
+  level:
+    org.springframework.security: DEBUG
+
   datasource:
     url: jdbc:postgresql://localhost:5432/portfolio_manager
     username: ${POSTGRE_USERNAME}

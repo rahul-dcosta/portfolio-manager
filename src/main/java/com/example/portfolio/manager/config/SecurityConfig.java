@@ -20,13 +20,14 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
-                    .requestMatchers("/", "/index.html", "/static/**", "/error", "/webjars/**", "/login", "/oauth2/**").permitAll() // allow access to these paths without authentication
+                    .requestMatchers("/", "/error", "/webjars/**", "/api/users").permitAll()
                     .anyRequest().authenticated()
             )
             .exceptionHandling(exceptionHandling ->
                 exceptionHandling
                     .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
             )
+            .csrf().disable() // Temporarily disable CSRF protection for testing
             .oauth2Login();
 
         return http.build();
